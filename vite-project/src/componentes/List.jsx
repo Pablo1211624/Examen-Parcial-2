@@ -1,24 +1,24 @@
-import { useState } from "react";
-
-const onSelect = (e) => {};
-
 function List({ data }) {
-  const [index, setIndex] = useState(0);
-
   return (
     <ul className="list-group">
-      {data.map((item, i) => (
+      <li className="list-group-item">
+        <div className="row fw-bold">
+          <div className="col-3">ID</div>
+          <div className="col-3">Producto</div>
+          <div className="col-3">Precio</div>
+          <div className="col-3">Stock</div>
+        </div>
+      </li>
+      {data.map((item) => (
         <li
-          key={i}
-          className={`list-group-item ${i === index ? "active" : ""}`}
-          onClick={() => {
-            setIndex(i);
-            onSelect(item);
-          }}
+          key={item.ID}
+          className="list-group-item"
         >
           <div className="row">
-            <div className="col-6">{item.name}</div>
-            <div className="col-6">{item.Precio}</div>
+            <div className="col-3">{item.ID}</div>
+            <div className="col-3">{item.Nombre}</div>
+            <div className="col-3">Q{Number(item.Precio).toFixed(2)}</div>
+            <div className="col-3">{item.Stock}</div>
           </div>
         </li>
       ))}
